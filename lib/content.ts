@@ -5,8 +5,17 @@
  */
 
 export const SITE = {
-  escritorio: "Thiago Brito & Advogados Associados",
+  /**
+   * Razão social conforme cartão CNPJ 59.016.254/0001-40, natureza jurídica
+   * 232-1 (Sociedade Individual de Advocacia). Era "Thiago Brito & Advogados
+   * Associados" até 02/09/2026 — descrevia sociedade pluripessoal inexistente,
+   * o que o CED art. 44 não admite. Rende no rodapé, no copyright e no
+   * `name` do JSON-LD de `app/layout.tsx`, então o erro saía nos três.
+   */
+  escritorio: "Thiago Brito Sociedade Individual de Advocacia",
   cidade: "Brasília — DF",
+  /** Inscrição do responsável — publicação obrigatória (CED art. 44). */
+  oabResponsavel: "OAB/DF 41.205",
   whatsappFallback: "5561985944887",
   url: "https://thiagobrito.adv.br",
 } as const;
@@ -152,6 +161,12 @@ export const CTA_FINAL = {
 export const FOOTER = {
   escritorio: SITE.escritorio,
   endereco: "Brasília — DF",
+  /**
+   * Antes citava só o Provimento 205. Citar a norma não cumpre a norma: o
+   * CED art. 44 exige o nome e o **número de inscrição** do responsável na
+   * peça. É o mesmo padrão de `pre-sell/lib/ferramentas.ts` (RESPONSAVEL).
+   */
+  responsavel: `Responsável técnico: Thiago Brito — ${SITE.oabResponsavel}`,
   oab: "Atuação conforme Provimento OAB 205/2021. Este site não promete resultados.",
   copyright: `© ${new Date().getFullYear()} ${SITE.escritorio}. Todos os direitos reservados.`,
 } as const;
